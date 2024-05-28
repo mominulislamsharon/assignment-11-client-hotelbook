@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router-dom';
+import logo from "../../../assets/logo.png"
 
 const Navbar = () => {
     const navLinks = <>
@@ -10,7 +11,7 @@ const Navbar = () => {
             <li><Link to='/contact' className={({isActive}) => isActive ? 'text-primary   font-bold text-lg' : 'font-bold text-lg'}>Contact Us</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 h-24">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -20,7 +21,7 @@ const Navbar = () => {
         {navLinks}
       </ul>
     </div>
-    <Link to='/' className="btn btn-ghost text-xl">daisyUI</Link>
+    <Link to='/' className=" w-36 mt-10 text-xl"><img src={logo} alt="" /></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

@@ -1,8 +1,19 @@
 
 import { Link } from 'react-router-dom';
 import logo from "../../../assets/logo.png"
+import { useState } from 'react';
+import LoginModal from '../../Login/Login';
 
 const Navbar = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
     const navLinks = <>
            <li><Link to='/' className={({isActive}) => isActive ? 'text-primary   font-bold text-lg' : 'font-bold text-lg'}>Home</Link></li>
             <li><Link to='/rooms' className={({isActive}) => isActive ? 'text-primary   font-bold text-lg' : 'font-bold text-lg'}>Rooms</Link></li>
@@ -28,9 +39,13 @@ const Navbar = () => {
       {navLinks}
     </ul>
   </div>
+  {/* <div className="navbar-end">
+    <Link onClick={openModal} to='/login' className="btn">Login</Link>
+  </div> */}
   <div className="navbar-end">
-    <a className="btn">Login</a>
-  </div>
+  <button onClick={openModal} className="btn">Login</button>
+  {modalIsOpen && <LoginModal isOpen={modalIsOpen} closeModal={closeModal} />}
+</div>
 </div>
     );
 };

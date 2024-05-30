@@ -112,10 +112,10 @@ const Banner = () => {
     
             <div className="bg-[#333333] bg-fixed absolute md:mt-[-70px]  mt-[-40px] ml-[-20px]  shadow-lg p-12 rounded-lg">
                 <form>
-                    <input className=" ml-6 md:p-6 mb-4" type="date" name="date" id="" placeholder="Date Arrival" />
-                    <input className="ml-6 p-4 md:p-6 mb-4" type="date" name="" id="" placeholder="Date Departure" />
-                    <input className="ml-6 p-4 md:p-6 mb-4" type="number" name="adult" id="" placeholder="Adult" />
-                    <input className="ml-6 p-4 md:p-6 mb-4" type="number" name="child" id="" placeholder="Child" />
+                    <input className=" ml-6 md:p-6 mb-4" type="date" name="date" id="arriableDate" placeholder="Date Arrival" />
+                    <input className="ml-6 p-4 md:p-6 mb-4" type="date" name="" id="departureDate" placeholder="Date Departure" />
+                    <input className="ml-6 p-4 md:p-6 mb-4" type="number" name="adult" id="adults" placeholder="Adult" />
+                    <input className="ml-6 p-4 md:p-6 mb-4" type="number" name="child" id="children" placeholder="Child" />
                     <input className="ml-6  bg-white rounded-xl font-bold p-3 w-24 md:w-32" type="submit" value="Book Now" />
                 </form>
             </div>

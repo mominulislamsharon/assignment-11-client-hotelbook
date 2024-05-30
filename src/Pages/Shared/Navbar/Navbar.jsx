@@ -15,11 +15,11 @@ const Navbar = () => {
     setModalIsOpen(false);
   };
     const navLinks = <>
-           <li><Link to='/' className={({isActive}) => isActive ? 'text-primary   font-bold text-lg' : 'font-bold text-lg'}>Home</Link></li>
-            <li><Link to='/rooms' className={({isActive}) => isActive ? 'text-primary   font-bold text-lg' : 'font-bold text-lg'}>Rooms</Link></li>
-            <li><Link to='/mybookings' className={({isActive}) => isActive ? 'text-primary   font-bold text-lg' : 'font-bold text-lg'}>My Bookings</Link></li>
-            <li><Link to='/about' className={({isActive}) => isActive ? 'text-primary   font-bold text-lg' : 'font-bold text-lg'}>About Us</Link></li>
-            <li><Link to='/contact' className={({isActive}) => isActive ? 'text-primary   font-bold text-lg' : 'font-bold text-lg'}>Contact Us</Link></li>
+           <li><Link to='/'>Home</Link></li>
+            <li><Link to='/rooms'>Rooms</Link></li>
+            <li><Link to='/mybookings'>My Bookings</Link></li>
+            <li><Link to='/about'>About Us</Link></li>
+            <li><Link to='/contact'>Contact Us</Link></li>
     </>
     return (
         <div className="navbar bg-base-100 h-24">

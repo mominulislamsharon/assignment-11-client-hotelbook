@@ -1,29 +1,53 @@
 
+import ReactModal from 'react-modal';
 
-import { useState } from "react";
+ReactModal.setAppElement('#root');
+
+import React, { useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Modal from 'react-modal';
 import Register from "../Register/Register";
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const LoginModal = ({ isOpen, closeModal }) => {
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
+        
+  const {signIn} = useContext(AuthContext);
+
   const handleLogin = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+    .then(result => {
+      const user = result.user;
+      console.log(user)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
     
   };
   const handleRegisterClick = () => {
     setRegisterModalOpen(true);
   };
 
+
   return (
     <Modal className="fixed  md:w-1/2  rounded-lg"
     overlayClassName="fixed inset-0 bg-white rounded-lg  md:w-1/2 mx-auto md:h-[500px] mt-28" isOpen={isOpen} onRequestClose={closeModal}>
       {!registerModalOpen && (
+        
       <div className='flex flex-col justify-center items-center'>
       
       <h2 className="text-2xl mt-4 font-bold text-center border-b-2 w-full pb-4 mb-4">Login</h2>
-      <form className=' border-b-2   p-4 mx-auto w-1/2' onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className=' border-b-2   p-4 mx-auto w-1/2'  >
         <div className=''>
         <input className=' w-full border mb-3 p-2 rounded-md'
           type="email"
@@ -36,7 +60,7 @@ const LoginModal = ({ isOpen, closeModal }) => {
         <input className='w-full border mb-3 p-2 rounded-md'
           type="password"
           placeholder="Password"
-          name="poassword"
+          name="password"
           required
         />
         </div>

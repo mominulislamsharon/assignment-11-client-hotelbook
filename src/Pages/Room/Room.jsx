@@ -21,7 +21,7 @@ const Room = () => {
         </div>
             <div className="mt-12 container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {
-                displayRooms.map(room1 => <RoomCard key={room.id} rooms={room1}></RoomCard>,
+                displayRooms.map(room1 => <RoomCard key={room1.id} rooms={room1}></RoomCard>,
             )
             }
         </div>

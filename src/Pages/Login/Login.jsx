@@ -1,6 +1,7 @@
 
 import ReactModal from 'react-modal';
-
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 ReactModal.setAppElement('#root');
 
 import React, { useState } from "react";
@@ -14,7 +15,7 @@ const LoginModal = ({ isOpen, closeModal }) => {
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
         
-  const {signIn} = useContext(AuthContext);
+  const {signIn, googleLogin} = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -31,9 +32,19 @@ const LoginModal = ({ isOpen, closeModal }) => {
     .catch(error => {
       console.log(error)
     })
-
-    
   };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+    .then(result => {
+        const user = result.user;
+        console.log(user);
+    })
+    .catch(error => {
+        console.log(error);
+    })
+  }
+
   const handleRegisterClick = () => {
     setRegisterModalOpen(true);
   };
@@ -67,11 +78,11 @@ const LoginModal = ({ isOpen, closeModal }) => {
         <input className='w-full btn  mb-6 ' type="submit" value="SIGN IN!" />
       </form>
       <div className='flex flex-col sm:flex-row gap-3  mt-3'>
-      <button  className="btn font-bold flex p-2 bg-gray-100 border border-gray-300 rounded">
+      <button onClick={handleGoogleLogin} className="btn font-bold flex p-2 bg-gray-100 border border-gray-300 rounded">
           <FaGoogle className="text-red-600 "></FaGoogle>
           Login With Google
         </button>
-        <button className="btn font-bold flex items-center justify-center p-2 bg-gray-100 border border-gray-300 rounded">
+        <button  className="btn font-bold flex items-center justify-center p-2 bg-gray-100 border border-gray-300 rounded">
           <FaGithub></FaGithub>
           Login With GitHub
         </button>

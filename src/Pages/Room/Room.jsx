@@ -7,7 +7,7 @@ const Room = () => {
     const [room, setRoom] = useState([]);
 
     useEffect(() => {
-        fetch('room.json')
+        fetch('http://localhost:5000/room')
         .then(res => res.json())
         .then(data => setRoom(data))
     },[])
@@ -21,7 +21,7 @@ const Room = () => {
         </div>
             <div className="mt-12 container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {
-                displayRooms.map(room1 => <RoomCard key={room1.id} rooms={room1}></RoomCard>,
+                displayRooms.map(room1 => <RoomCard key={room1._id} rooms={room1}></RoomCard>,
             )
             }
         </div>

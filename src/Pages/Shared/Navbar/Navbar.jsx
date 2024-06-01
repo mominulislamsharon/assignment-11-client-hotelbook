@@ -29,7 +29,8 @@ const Navbar = () => {
     const navLinks = <>
            <li><Link to='/'>Home</Link></li>
             <li><Link to='/rooms'>Rooms</Link></li>
-            <li><Link to='/mybookings'>My Bookings</Link></li>
+            {user?.email && <li><Link to='/mybookings'>My Bookings</Link></li>}
+            
             <li><Link to='/about'>About Us</Link></li>
             <li><Link to='/contact'>Contact Us</Link></li>
     </>
@@ -56,8 +57,10 @@ const Navbar = () => {
   </div> */}
   <div className="navbar-end">
     {
-      user?.email ?
+      user?.email ? <>
+      
       <button onClick={handleSignOut}  className="btn text-lg font-bold  ">Sign Out</button>
+      </>
       :
      <button onClick={openModal} className="btn text-lg font-bold ">Login</button>
     }

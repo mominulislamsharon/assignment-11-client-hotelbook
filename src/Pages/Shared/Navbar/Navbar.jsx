@@ -1,11 +1,23 @@
 
 import { Link } from 'react-router-dom';
 import logo from "../../../assets/logo.png"
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import LoginModal from '../../Login/Login';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const Navbar = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    logOut()
+    .then(result => {
+      console.log(result.user);
+    })
+    .catch(error => {
+      console.log(error.message);
+    })
+  }
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -43,7 +55,12 @@ const Navbar = () => {
     <Link onClick={openModal} to='/login' className="btn">Login</Link>
   </div> */}
   <div className="navbar-end">
-  <button onClick={openModal} className="btn">Login</button>
+    {
+      user?.email ?
+      <button onClick={handleSignOut}  className="btn text-lg font-bold  ">Sign Out</button>
+      :
+     <button onClick={openModal} className="btn text-lg font-bold ">Login</button>
+    }
   {modalIsOpen && <LoginModal isOpen={modalIsOpen} closeModal={closeModal} />}
 </div>
 </div>

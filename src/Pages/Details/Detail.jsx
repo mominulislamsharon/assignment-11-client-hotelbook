@@ -58,7 +58,7 @@ const Detail = () => {
                 <img className="w-full rounded-lg" src={roomImages} alt="" />
                 <div className="flex-1   p-6 border-b-2 pb-10 justify-between mt-12 md:mt-16">
                 <h1 className="text-2xl font-bold md:text-3xl lg:text-4xl">{name}</h1>
-                <p className="text-xl font-medium mb-4">From ${pricePerNight}/Per Night</p>
+                <p className="text-xl pt-4 font-medium mb-4">From ${pricePerNight}/Per Night</p>
                 </div>
                 <div className="flex gap-28 mt-14">
                     <p className="font-bold">Room Size: {roomSize}</p>

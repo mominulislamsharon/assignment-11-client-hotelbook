@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import Detail from "../Pages/Details/Detail";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import PrivateRoutes from "./PrivateRoutes";
+import Upadate from "../Pages/Upadate/Upadate";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         {
           path: '/mybookings',
           element: <PrivateRoutes><CheckOut></CheckOut></PrivateRoutes>,
+        },
+        {
+          path: 'update/:id',
+          element: <Upadate></Upadate>,
         }
       ]
     },

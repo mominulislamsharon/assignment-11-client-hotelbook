@@ -1,7 +1,8 @@
-import React from 'react';
+import { Link } from "react-router-dom";
 
-const BookingRow = ({booking, handleDelete}) => {
-    const {_id, customerName, checkIn, checkOut, room} = booking || {};
+
+const BookingRow = ({booking, handleDelete, handleBookingConfirm}) => {
+    const {_id, customerName, checkIn, checkOut, room, status} = booking || {};
     
     return (
         <tr>
@@ -27,11 +28,11 @@ const BookingRow = ({booking, handleDelete}) => {
     <td>{room}</td>
     <td>{checkIn}</td>
     <td>{checkOut}</td>
-    {/* <td>
-      { 
-        status === 'confirm' ? <span className="font-bold text-primary">Confirmed</span> :
-        <button onClick={() => handleBookingConfirm(_id)} className="btn btn-ghost btn-xs">Please Confirm</button>}
-    </td> */}
+    <td>
+        <Link to={`/update/${_id}`}>
+        <button className="btn">Update</button>
+        </Link>
+    </td>
   </tr>
     );
 };

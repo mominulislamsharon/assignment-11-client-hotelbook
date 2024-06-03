@@ -1,11 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../Context/AuthProvider";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 
 const PrivateRoutes = ({children}) => {
-    const {user, loading} = useContext(AuthContext);
+    const {user, loading, openModal} = useContext(AuthContext);
+    const location = useLocation();
 
+    useEffect(() => {
+        if(!loading && !user?.email){
+           openModal(); 
+        }
+    },[])
+    
     if(loading) {
         return <span className="loading loading-ring loading-lg"></span>
     }
@@ -15,7 +22,8 @@ const PrivateRoutes = ({children}) => {
     }
 
 
-    return <Navigate to="/login" replace></Navigate>
+  
+    return null;
 };
 
 export default PrivateRoutes;

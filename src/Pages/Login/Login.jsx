@@ -1,7 +1,6 @@
 
 import ReactModal from 'react-modal';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
 ReactModal.setAppElement('#root');
 
 import React, { useState } from "react";

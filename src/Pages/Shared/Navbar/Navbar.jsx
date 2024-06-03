@@ -6,8 +6,7 @@ import LoginModal from '../../Login/Login';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const Navbar = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const {user, logOut} = useContext(AuthContext);
+  const {user, logOut, modalIsOpen, openModal, closeModal} = useContext(AuthContext);
 
   const handleSignOut = () => {
     logOut()
@@ -19,13 +18,6 @@ const Navbar = () => {
     })
   }
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
     const navLinks = <>
            <li><Link to='/'>Home</Link></li>
             <li><Link to='/rooms'>Rooms</Link></li>
@@ -52,9 +44,6 @@ const Navbar = () => {
       {navLinks}
     </ul>
   </div>
-  {/* <div className="navbar-end">
-    <Link onClick={openModal} to='/login' className="btn">Login</Link>
-  </div> */}
   <div className="navbar-end">
     {
       user?.email ? <>

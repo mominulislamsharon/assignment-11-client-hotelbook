@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/details/:id',
-          element: <Detail></Detail>,
+          element: <PrivateRoutes ><Detail></Detail></PrivateRoutes>,
           loader: ({params}) => fetch(`http://localhost:5000/details/${params.id}`)
         },
         {
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         {
           path: 'update/:id',
           element: <Upadate></Upadate>,
-        }
+        }, 
       ]
     },
   ]);

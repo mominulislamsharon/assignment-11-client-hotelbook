@@ -10,6 +10,7 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading]= useState(true);
     const googleProvider = new GoogleAuthProvider();
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -40,7 +41,11 @@ const AuthProvider = ({children}) => {
         return () => {
             return unsubscribe();
         }
-    },[])
+    },[]);
+
+    const openModal = () => setModalIsOpen(true);
+    const closeModal = () => setModalIsOpen(false);
+
 
     const authInfo = {
         user,
@@ -48,7 +53,10 @@ const AuthProvider = ({children}) => {
         createUser,
         signIn,
         googleLogin,
-        logOut
+        logOut,
+        modalIsOpen,
+        openModal,
+        closeModal
     }
     return (
         <AuthContext.Provider value={authInfo}>

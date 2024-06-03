@@ -9,6 +9,7 @@ import Modal from 'react-modal';
 import Register from "../Register/Register";
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
+import axios from 'axios';
 
 const LoginModal = ({ isOpen, closeModal }) => {
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
@@ -21,12 +22,18 @@ const LoginModal = ({ isOpen, closeModal }) => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
 
     signIn(email, password)
     .then(result => {
-      const user = result.user;
-      console.log(user)
+      const loggedInUser = result.user;
+      console.log(loggedInUser);
+      const user = {email};
+      // token jwt 
+      axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+      .then(res => {
+        console.log(res.data)
+      })
     })
     .catch(error => {
       console.log(error)

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import BookingRow from "./BookingRow";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const CheckOut = () => {
@@ -12,9 +13,13 @@ const CheckOut = () => {
 
     const url = `http://localhost:5000/booking?email=${user.email}`;
     useEffect(() => {
-        fetch(url)
-        .then(res => res.json())
-        .then(data => setCheckOuts(data))
+      axios.get(url, {withCredentials: true})
+      .then(res => {
+        setCheckOuts(res.data);
+      })
+        // fetch(url)
+        // .then(res => res.json())
+        // .then(data => setCheckOuts(data))
     },[])
 
 

@@ -53,6 +53,12 @@ const Detail = () => {
     }
     return (
         <div>
+            <div className="relative rounded-lg ml-6 mb-8 mr-6">
+                <img className="w-full rounded-lg h-[600px]" src="https://images.pexels.com/photos/271643/pexels-photo-271643.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" />
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-70">
+                    <h1 className="text-6xl font-bold text-center pt-72 text-white">Your Dream Room</h1>
+                </div>
+            </div>
             <div className="flex flex-col lg:flex-row gap-24 mb-6 container mx-auto">
             <div className="flex-1">
                 <img className="w-full rounded-lg" src={roomImages} alt="" />

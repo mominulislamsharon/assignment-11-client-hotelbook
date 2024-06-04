@@ -9,6 +9,7 @@ import CheckOut from "../Pages/CheckOut/CheckOut";
 import PrivateRoutes from "./PrivateRoutes";
 import Upadate from "../Pages/Upadate/Upadate";
 import Contact from "../Pages/Contact/Contact";
+import About from "../Pages/About/About";
 
 const router = createBrowserRouter([
     {
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
         }, 
         {
           path: '/contact',
-          element: <Contact></Contact>
+          element: <Contact></Contact>,
+        },
+        {
+          path: '/about',
+          element: <About></About>,
         }
       ]
     },

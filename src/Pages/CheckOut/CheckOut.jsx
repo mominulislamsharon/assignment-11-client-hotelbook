@@ -6,28 +6,10 @@ import Swal from "sweetalert2";
 
 const CheckOut = () => {
     const {user} = useContext(AuthContext);
-    // const user = { email: 'aaaa@gmail.com' };
     const [checkOuts, setCheckOuts] = useState([]);
 
-    
-
-    // const url = `http://localhost:5000/booking?email=${user.email}`;
-    // useEffect(() => {
-    //   axios.get(url, {withCredentials: true})
-    //   .then(res => {
-    //     console.log(res.data)
-    //     setCheckOuts(res.data);
-    //   })
-    //     // fetch(url)
-    //     // .then(res => res.json())
-    //     // .then(data => setCheckOuts(data))
-    // },[])
-
-
-
 useEffect(() => {
-        // const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-        // setCheckOuts(bookings);
+        
         fetch(`http://localhost:5000/booking/${user.email}`)
         .then(res => res.json())
         .then(data => setCheckOuts(data))

@@ -8,7 +8,6 @@ const Upadate = () => {
     const [booking, setBooking] = useState(null);
 
     useEffect(() => {
-        // if(id){
 
             fetch(`http://localhost:5000/booking-update/${id}`)
             .then(res => res.json())
@@ -16,7 +15,6 @@ const Upadate = () => {
                 setBooking(data);
               })
               .catch(error => console.error("Error fetching booking data:", error));
-        // }
     },[id])
 
      const handleUpdate = e => {

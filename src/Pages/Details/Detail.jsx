@@ -34,7 +34,7 @@ const Detail = () => {
         const updatedBookings = [...existingBookings, booking];
         localStorage.setItem('bookings', JSON.stringify(updatedBookings));
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://hotel-book-server.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

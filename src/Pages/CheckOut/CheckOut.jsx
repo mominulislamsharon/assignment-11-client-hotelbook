@@ -10,7 +10,7 @@ const CheckOut = () => {
 
 useEffect(() => {
         
-        fetch(`http://localhost:5000/booking/${user.email}`)
+        fetch(`https://hotel-book-server.vercel.app/booking/${user.email}`)
         .then(res => res.json())
         .then(data => setCheckOuts(data))
     }, []);
@@ -26,7 +26,7 @@ useEffect(() => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/booking/${id}?email=${user.email}`, {
+                fetch(`https://hotel-book-server.vercel.app/booking/${id}?email=${user.email}`, {
                   method: 'DELETE',
                   headers: {
                     'Content-Type': 'application/json'

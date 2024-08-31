@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from 'sweetalert2'
@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 
 const Detail = () => {
     const details1 = useLoaderData();
-    const {name, _id, description, pricePerNight, roomSize, availability, roomImages, specialOffers} = details1;
+    const {name, _id, description, pricePerNight, roomSize, roomImages, specialOffers} = details1;
     const {user} = useContext(AuthContext);
 
     const handleBook = e => {
@@ -30,7 +30,9 @@ const Detail = () => {
             adults,
             children
         }
-        console.log(booking);
+        const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
+        const updatedBookings = [...existingBookings, booking];
+        localStorage.setItem('bookings', JSON.stringify(updatedBookings));
 
         fetch('http://localhost:5000/booking', {
             method: 'POST',
@@ -41,16 +43,17 @@ const Detail = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            if(data.insertedId)
+            if(data.insertedId){
                 Swal.fire({
                     title: 'Success',
-                    text: 'Confirm Successfully',
+                    text: 'Booking Confirmed Successfully',
                     icon: 'success',
                     confirmButtonText: 'Ok',
-                  });
+                });
+            }
         })
-    }
+        .catch(error => console.error('Error:', error));
+    };
     return (
         <div>
             <div className="relative rounded-lg ml-6 mb-8 mr-6">

@@ -2,66 +2,87 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import BookingRow from "./BookingRow";
 import Swal from "sweetalert2";
-import axios from "axios";
 
 
 const CheckOut = () => {
     const {user} = useContext(AuthContext);
-    const [checkOuts, setCheckOuts] = useState([]);{};
+    // const user = { email: 'aaaa@gmail.com' };
+    const [checkOuts, setCheckOuts] = useState([]);
 
     
 
-    const url = `http://localhost:5000/booking?email=${user.email}`;
-    useEffect(() => {
-      axios.get(url, {withCredentials: true})
-      .then(res => {
-        console.log(res.data)
-        setCheckOuts(res.data);
-      })
-        // fetch(url)
-        // .then(res => res.json())
-        // .then(data => setCheckOuts(data))
-    },[])
+    // const url = `http://localhost:5000/booking?email=${user.email}`;
+    // useEffect(() => {
+    //   axios.get(url, {withCredentials: true})
+    //   .then(res => {
+    //     console.log(res.data)
+    //     setCheckOuts(res.data);
+    //   })
+    //     // fetch(url)
+    //     // .then(res => res.json())
+    //     // .then(data => setCheckOuts(data))
+    // },[])
 
 
-    const handleDelete = id => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then(result => {
-      if (result.isConfirmed) {
-        fetch(`http://localhost:5000/booking/${id}`, {
-          method: 'DELETE'
-        })
+
+useEffect(() => {
+        // const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        // setCheckOuts(bookings);
+        fetch(`http://localhost:5000/booking/${user.email}`)
         .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          if (data.deletedCount > 0) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success"
-            });
-            const remaining = checkOuts.filter(booking => booking._id !== id);
-            setCheckOuts(remaining);
-          }
-        })
-        .catch(error => {
-          console.error('Error deleting booking:', error);
-          Swal.fire({
-            title: "Error!",
-            text: "There was a problem deleting your booking.",
-            icon: "error"
-          });
+        .then(data => setCheckOuts(data))
+    }, []);
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/booking/${id}?email=${user.email}`, {
+                  method: 'DELETE',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                })
+                .then(res => res.json())
+                .then(data => {
+                  if(data.deletedCount > 0){
+
+                    Swal.fire({
+                      title: "Deleted!",
+                      text: "Your booking has been deleted.",
+                      icon: "success"
+                  });
+
+                    const remaining = checkOuts.filter(booking => booking._id !== id);
+                    setCheckOuts(remaining);
+                    localStorage.setItem('bookings', JSON.stringify(remaining));
+                  } 
+                  else {
+                    Swal.fire({
+                      title: "Error!",
+                      text: "There was a problem deleting your booking.",
+                      icon: "error"
+                  });
+                  }
+                })
+                .catch(error => {
+                  Swal.fire({
+                    title: "Error!",
+                    text: "There was a problem deleting your booking.",
+                    icon: "error"
+                });
+                })
+            }
         });
-      }
-    });
-  };
+    };
+
 
     
 

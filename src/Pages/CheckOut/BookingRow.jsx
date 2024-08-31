@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const BookingRow = ({booking, handleDelete}) => {
     const {_id, customerName, checkIn, checkOut, room, status} = booking || {};
-    
     return (
         <tr>
     <td>

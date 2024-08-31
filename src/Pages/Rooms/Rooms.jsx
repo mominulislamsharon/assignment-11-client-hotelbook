@@ -21,6 +21,7 @@ const Rooms = () => {
             </div>
             <div>
                 <h1 className="text-center text-3xl font-bold mb-8">Futured Room</h1>
+                <p className="font-medium text-gray-400 pt-4 text-center mb-8">Future room booking at hotels allows guests to reserve accommodations for dates beyond the current availability window, ensuring a secured stay for upcoming travel plans.</p>
             </div>
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {

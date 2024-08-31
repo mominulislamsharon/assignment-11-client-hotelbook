@@ -20,6 +20,7 @@ const Register = ({closeModal}) => {
     .then(result => {
         const user = result.user;
         console.log(user)
+        closeModal();
     })
     .catch(error => {
         console.log(error)

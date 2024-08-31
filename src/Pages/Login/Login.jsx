@@ -33,6 +33,7 @@ const LoginModal = ({ isOpen, closeModal }) => {
       axios.post('https://hotel-book-server.vercel.app/jwt', user, {withCredentials: true})
       .then(res => {
         console.log(res.data)
+        closeModal();
       })
     })
     .catch(error => {

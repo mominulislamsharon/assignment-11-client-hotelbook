@@ -4,6 +4,7 @@ import logo from "../../../assets/logo.png"
 import { useContext, useState } from 'react';
 import LoginModal from '../../Login/Login';
 import { AuthContext } from '../../../Context/AuthProvider';
+import proifleImage from '../../../assets/user.png';
 
 const Navbar = () => {
   const {user, logOut, modalIsOpen, openModal, closeModal} = useContext(AuthContext);
@@ -44,7 +45,10 @@ const Navbar = () => {
       {navLinks}
     </ul>
   </div>
-  <div className="navbar-end">
+  <div className="navbar-end gap-4">
+  <div className='w-12 h-12'>
+    <img className='rounded-full' src={user && user.photoURL ? user.photoURL : proifleImage} alt="profile"  />
+  </div>
     {
       user?.email ? <>
       

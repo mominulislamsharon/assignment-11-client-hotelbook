@@ -44,7 +44,7 @@ const Banner = () => {
     <div className="absolute rounded-xl flex items-center w-full h-full left-0  top-0 bg-gradient-to-tr from-[#151515] to-[rgba(21, 21, 21, 0)]">
       <div className="text-white space-y-7 text-center w-full">
         <h2 className="text-6xl font-bold">Enjoy Your Vacation With Us</h2>
-        <p>Encourage immediate action by implying limited availability or special promotions. A headline like Book Now and Save 20% on Your Summer Vacation  can create a sense of urgency</p>
+        <p>Our hotel features comfortable accommodations, modern amenities, a picturesque environment, and renowned service. Ensure your dream vacation with us!</p>
         <div className="input ml-96 input-bordered w-1/3 flex items-center">
         <input type="text" className="grow text-black" placeholder="Search" />
         <button className="btn  btn-primary rounded-full w-28 mt-5 mb-5">Search</button>

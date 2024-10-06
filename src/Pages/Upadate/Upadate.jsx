@@ -9,7 +9,7 @@ const Upadate = () => {
 
     useEffect(() => {
 
-            fetch(`https://hotel-book-server.vercel.app/booking-update/${id}`)
+            fetch(`http://localhost:5000/booking-update/${id}`)
             .then(res => res.json())
             .then(data => {
                 setBooking(data);
@@ -26,7 +26,7 @@ const Upadate = () => {
         const checkOut = form.checkOut.value;
         const updateBooking = {customerName, room, checkIn, checkOut};
 
-        fetch(`https://hotel-book-server.vercel.app/booking/${id}`,{
+        fetch(`http://localhost:5000/booking/${id}`,{
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json'

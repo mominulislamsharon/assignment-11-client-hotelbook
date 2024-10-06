@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 
-const RoomsCard = ({rooms2}) => {
-    const {_id, roomImages, name, roomSize, pricePerNight} = rooms2 || {};
+const RoomsCard = ({rooms}) => {
+    const {_id, roomImages, name, roomSize, pricePerNight} = rooms || {};
     return (
           <div className="card card-compact w-96 bg-base-100 shadow-xl">
   <figure  ><img className="h-[280px]" src={roomImages} alt=""/>

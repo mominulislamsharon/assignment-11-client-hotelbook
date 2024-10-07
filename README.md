@@ -34,7 +34,7 @@ This project is the client-side of a Hotel Booking web application. Users can se
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/your-username/hotel-booking-client.git
+    git clone https://github.com/mominulislamsharon/hotel-booking-client.git
     cd hotel-booking-client
     ```
 
